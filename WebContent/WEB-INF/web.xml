@@ -13,29 +13,46 @@
   </welcome-file-list>
     -->
     
+  <!-- ContextLoaderListener 설정 -->
+  <listener>
+  	<listener-class>company.web.contextlistener.ContextLoaderListener</listener-class>
+  	<!-- 서버 Deploy과 UnDeploy에 자동적으로 적용됨으로 name 속성이 필요치 않다. 시작 초기화와 종결자는 하나이니까 -->
+  </listener>
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>/WEB-INF/applicationContext.xml</param-value>
+  </context-param>
+  
+  <!-- CharactorEncodingFilter 설정 -->
+  <filter>
+  	<filter-name>charactorEncodingFilter</filter-name>
+  	<filter-class>company.web.filter.CharactorEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>UTF-8</param-value>
+  		<!-- CharactorEncodingFilter에서 사용할 encoding을 설정하는 것이다. -->
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>charactorEncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  	<!-- 앞으로 context root를 통과하는 모든 요청은 해당 필터를 거친다 -->
+  	<!-- 즉 서블릿이 시작하기 앞서 Filter의 doFilter가 작동하는 것을 볼 수 있다. -->
+  </filter-mapping>
+  
+  <!-- dispatcher01 설정 -->
   <servlet>
-  	<servlet-name>dispatcher</servlet-name>
-  	<servlet-class>company.web.servlet.DispatcherServlet01</servlet-class>
-  	<init-param>
-  		<param-name>x</param-name>
-  		<param-value>10</param-value>  		
-  		<!-- 이렇게 설정한 값을 초기화 하여 배정하는 것이다. --> 
-  	</init-param>
-  	<init-param>
-  		<param-name>y</param-name>
-  		<param-value>200</param-value>
-  	</init-param>
-  	<load-on-startup>1</load-on-startup>
-  	<!-- deploy 하자마자 우선순위로 객체를 미리 만드는 과정이다. -->
-  	<!-- 단 load-on-startup은 init 밑에 위치해 있어야 한다. -->
-  </servlet>
+	<servlet-name>dispatcher01</servlet-name>
+	<servlet-class>company.web.servlet.DispatcherServlet01</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet> 
   <servlet-mapping>
-  	<servlet-name>dispatcher</servlet-name>
-  	<url-pattern>/</url-pattern>
-  	<!-- / 자체가 context root이기 때문에 처음 웹서버가 실행되면 dispatcher가실행된다. -->
+  	<servlet-name>dispatcher01</servlet-name>
+  	<url-pattern>/dispatcher01</url-pattern>
   </servlet-mapping>
+  	   
   
-  
+  <!-- dispatcher02 설정 -->
   <servlet>
   	<servlet-name>dispatcher02</servlet-name>
   	<servlet-class>company.web.servlet.DispatcherServlet02</servlet-class>
@@ -52,4 +69,74 @@
   	<servlet-name>dispatcher02</servlet-name>
   	<url-pattern>/dispatcher02</url-pattern>
   </servlet-mapping>
+  
+  <!-- dispatcher03 설정 -->
+  <servlet>
+	<servlet-name>dispatcher03</servlet-name>
+	<servlet-class>company.web.servlet.DispatcherServlet03</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet> 
+  <servlet-mapping>
+  	<servlet-name>dispatcher03</servlet-name>
+  	<url-pattern>/dispatcher03</url-pattern>
+  </servlet-mapping>
+  
+  <!-- dispatcher04 설정 -->
+  <servlet>
+	<servlet-name>dispatcher04</servlet-name>
+	<servlet-class>company.web.servlet.DispatcherServlet04</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet> 
+  <servlet-mapping>
+  	<servlet-name>dispatcher04</servlet-name>
+  	<url-pattern>/dispatcher04</url-pattern>
+  </servlet-mapping>
+  
+  <!-- dispatcher05 설정 -->
+  <servlet>
+	<servlet-name>dispatcher05</servlet-name>
+	<servlet-class>company.web.servlet.DispatcherServlet05</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet> 
+  <servlet-mapping>
+  	<servlet-name>dispatcher05</servlet-name>
+  	<url-pattern>/dispatcher05</url-pattern>
+  </servlet-mapping>
+  
+  <!-- dispatcher06 설정 -->
+  <servlet>
+	<servlet-name>dispatcher06</servlet-name>
+	<servlet-class>company.web.servlet.DispatcherServlet06</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet> 
+  <servlet-mapping>
+  	<servlet-name>dispatcher06</servlet-name>
+  	<url-pattern>/dispatcher06</url-pattern>
+  </servlet-mapping>
+  
+  <!-- dispatcher07 설정 -->
+  <servlet>
+	<servlet-name>dispatcher07</servlet-name>
+	<servlet-class>company.web.servlet.DispatcherServlet07</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet> 
+  <servlet-mapping>
+  	<servlet-name>dispatcher07</servlet-name>
+  	<url-pattern>/dispatcher07</url-pattern>
+  </servlet-mapping>
+  
+  <!-- dispatcher08 설정 -->
+  <servlet>
+	<servlet-name>dispatcher08</servlet-name>
+	<servlet-class>company.web.servlet.DispatcherServlet08</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet> 
+  <servlet-mapping>
+  	<servlet-name>dispatcher08</servlet-name>
+  	<url-pattern>/dispatcher08</url-pattern>
+  </servlet-mapping>
+  
+
+  
+  
 </web-app>
